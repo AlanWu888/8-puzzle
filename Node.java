@@ -1,12 +1,23 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Node {
     private boolean visited;
-    
+
     private String state;
     private ArrayList<Node> children;
     private Node parent;
+    private int cost;
+    private int estimatedCostToGoal;
+    private int totalCost;
+    private int depth;
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
 
     public boolean isVisited() {
         return visited;
@@ -16,70 +27,38 @@ public class Node {
         this.visited = visited;
     }
 
+    public int getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(int totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public void setTotalCost(int cost, int estimatedCost) {
+        this.totalCost = cost + estimatedCost;
+    }
+
+    public int getEstimatedCostToGoal() {
+        return estimatedCostToGoal;
+    }
+
+    public void setEstimatedCostToGoal(int estimatedCostToGoal) {
+        this.estimatedCostToGoal = estimatedCostToGoal;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
     public void setState(String state) {
         this.state = state;
     }
 
-    public static List<String> getSuccessors(String state) {
-        List<String> successors = new ArrayList<String>();
-
-        switch (state.indexOf("0")) {
-            case 0: {
-                successors.add(state.replace(state.charAt(0), '#').replace(state.charAt(1), state.charAt(0)).replace('#', state.charAt(1)));
-                successors.add(state.replace(state.charAt(0), '#').replace(state.charAt(3), state.charAt(0)).replace('#', state.charAt(3)));
-                break;
-            }
-            case 1: {
-                successors.add(state.replace(state.charAt(1), '#').replace(state.charAt(0), state.charAt(1)).replace('#', state.charAt(0)));
-                successors.add(state.replace(state.charAt(1), '#').replace(state.charAt(2), state.charAt(1)).replace('#', state.charAt(2)));
-                successors.add(state.replace(state.charAt(1), '#').replace(state.charAt(4), state.charAt(1)).replace('#', state.charAt(4)));
-                break;
-            }
-            case 2: {
-                successors.add(state.replace(state.charAt(2), '#').replace(state.charAt(1), state.charAt(2)).replace('#', state.charAt(1)));
-                successors.add(state.replace(state.charAt(2), '#').replace(state.charAt(5), state.charAt(2)).replace('#', state.charAt(5)));
-                break;
-            }
-            case 3: {
-                successors.add(state.replace(state.charAt(3), '#').replace(state.charAt(0), state.charAt(3)).replace('#', state.charAt(0)));
-                successors.add(state.replace(state.charAt(3), '#').replace(state.charAt(4), state.charAt(3)).replace('#', state.charAt(4)));
-                successors.add(state.replace(state.charAt(3), '#').replace(state.charAt(6), state.charAt(3)).replace('#', state.charAt(6)));
-                break;
-            }
-            case 4: {
-                successors.add(state.replace(state.charAt(4), '#').replace(state.charAt(1), state.charAt(4)).replace('#', state.charAt(1)));
-                successors.add(state.replace(state.charAt(4), '#').replace(state.charAt(3), state.charAt(4)).replace('#', state.charAt(3)));
-                successors.add(state.replace(state.charAt(4), '#').replace(state.charAt(5), state.charAt(4)).replace('#', state.charAt(5)));
-                successors.add(state.replace(state.charAt(4), '#').replace(state.charAt(7), state.charAt(4)).replace('#', state.charAt(7)));
-                break;
-            }
-            case 5: {
-                successors.add(state.replace(state.charAt(5), '#').replace(state.charAt(2), state.charAt(5)).replace('#', state.charAt(2)));
-                successors.add(state.replace(state.charAt(5), '#').replace(state.charAt(4), state.charAt(5)).replace('#', state.charAt(4)));
-                successors.add(state.replace(state.charAt(5), '#').replace(state.charAt(8), state.charAt(5)).replace('#', state.charAt(8)));
-                break;
-            }
-            case 6: {
-                successors.add(state.replace(state.charAt(6), '#').replace(state.charAt(3), state.charAt(6)).replace('#', state.charAt(3)));
-                successors.add(state.replace(state.charAt(6), '#').replace(state.charAt(7), state.charAt(6)).replace('#', state.charAt(7)));
-                break;
-
-            }
-            case 7: {
-                successors.add(state.replace(state.charAt(7), '#').replace(state.charAt(4), state.charAt(7)).replace('#', state.charAt(4)));
-                successors.add(state.replace(state.charAt(7), '#').replace(state.charAt(6), state.charAt(7)).replace('#', state.charAt(6)));
-                successors.add(state.replace(state.charAt(7), '#').replace(state.charAt(8), state.charAt(7)).replace('#', state.charAt(8)));
-                break;
-            }
-            case 8: {
-                successors.add(state.replace(state.charAt(8), '#').replace(state.charAt(5), state.charAt(8)).replace('#', state.charAt(5)));
-                successors.add(state.replace(state.charAt(8), '#').replace(state.charAt(7), state.charAt(8)).replace('#', state.charAt(7)));
-                break;
-            }
-        }
-        return successors;
-    }
-    
     public Node getParent() {
         return parent;
     }
