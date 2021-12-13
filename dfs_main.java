@@ -16,22 +16,23 @@ public class dfs_main {
 	    
 	    System.out.println("S1:");    
 	    dfs_search searchS1 = new dfs_search(new Node(format(S1)));
-	    Set<String> RS1 = new HashSet<>(searchS1.depthFirstSearch());	// set of S1's states as hashset
+	    Set<String> RS1 = new HashSet<>(searchS1.depthFirstSearch());	// set of S1's states as set
 	    List<String> listS1 = new ArrayList<String>();					// set -> list
 	    listS1.addAll(RS1);
 	    
 	    System.out.println("S2:");    
 	    dfs_search searchS2 = new dfs_search(new Node(format(S2)));
-	    Set<String> RS2 = new HashSet<>(searchS2.depthFirstSearch());	// set if S2's states as hashset
-	    List<String> listS2 = new ArrayList<String>();					// set -> list
-	    listS2.addAll(RS2);
+	    Set<String> RS2 = new HashSet<>(searchS2.depthFirstSearch());	// set if S2's states as set
+
 	    
-	    System.out.println("Getting similarities:");					// compare the lists
-	    List<String> differences = new ArrayList<>(listS1);
-	    differences.removeAll(listS2);
-	    listS1.removeAll(differences);
-	    System.out.println(listS1.size());
+	    System.out.println("Getting similarities:");					// compare the sets
+	    System.out.println(findIntersection(RS1, RS2).size());
     }
+	
+	private static Set<String> findIntersection(Set<String> rS1, Set<String> rS2) {
+		rS1.retainAll(rS2);
+		return rS1;
+	}
 	
     private static void prompt() {
     	System.out.println("====== Depth First Search ======");
