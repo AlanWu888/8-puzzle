@@ -16,7 +16,6 @@ public class dfs_main {
 	    String S2 = myObj.nextLine();						// input for S2
 	    
 	    
-	    
 	    System.out.println("S1:");    
 	    dfs_search searchS1 = new dfs_search(new Node(format(S1)));		
 	    Set<String> RS1 = new HashSet<>(searchS1.depthFirstSearch());	// set of all reachable states from S1
@@ -28,7 +27,12 @@ public class dfs_main {
 	    writeToTextFile(S1, S2, RS1, RS2); 
 	    
 	    System.out.println("Getting similarities:");					// compare the sets
-	    System.out.println(findIntersection(RS1, RS2).size());   
+	    System.out.println(findIntersection(RS1, RS2).size());  
+	    
+	    
+	    System.out.println("Enter to continue");
+	    String exit = myObj.nextLine();
+	    myObj.close();
     }
 	
 	/**
