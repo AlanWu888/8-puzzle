@@ -117,6 +117,7 @@ public class dfs_main {
      * @return	String of digits
      */
     private static String format(String input) {
-    	return input.replaceAll("[^0-9.]", "");
+    	return input.replaceAll("[^a-zA-Z0-9]", "");
+    	// return input.replaceAll("[^0-9.]", "");
     }
 }

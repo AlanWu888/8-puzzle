@@ -33,7 +33,7 @@ public class dfs_search {
      * depth first searches. After this, the successor queue is cleared/reset so that it can store the while loop's 
      * next iteration of successors to the newly expanded expansionNodes queue. 
      * 
-     * The current node is then removed from the LIFO queue so that it is not iterated over in the next iteration of
+     * The current node is then removed from the queue so that it is not iterated over in the next iteration of
      * the while loop. Additionally, the list of children is reset so that it can be used over the next iteration of
      * the main while loop.
      * 

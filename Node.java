@@ -6,8 +6,6 @@ import java.util.List;
  * contains methods:
  * 		> getState
  * 		> getChildren
- * @author Alan Wu
- *
  */
 public class Node {
     private String state;
@@ -35,9 +33,10 @@ public class Node {
 
         switch (parent.indexOf("0")) {
             case 0: {
-            	// replace the character at index 0 with #, then replace character at index 1 with character at index 0,
-            	// followed by replacing 
-            	//
+            	/*
+            	 * replace the character at the index of 0, where the position of the blank tile has been found, with a temporary
+            	 * character (#), and then replace this with the character in adjacent space to blank tile
+            	 */
                 children.add(parent.replace(parent.charAt(0), '#').replace(parent.charAt(1), parent.charAt(0)).replace('#', parent.charAt(1)));
                 children.add(parent.replace(parent.charAt(0), '#').replace(parent.charAt(3), parent.charAt(0)).replace('#', parent.charAt(3)));
                 break;

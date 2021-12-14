@@ -7,23 +7,20 @@ import java.util.NoSuchElementException;
 public class dfs_queue<Element> implements Iterable<Element> {
     private Node<Element> head;		// Start of queue
     private Node<Element> tail;		// end of queue
-    private int queueSize;               // number of elements on queue
-
-    // helper linked list class
-    private static class Node<Element> {
-        private Element element;
-        private Node<Element> next;
-    }
+    private int queueSize;			// number of elements on queue
 
     /**
-     * Initializes an empty queue.
+     * initialiser
      */
     public dfs_queue() {
         head = null;
         tail = null;
         queueSize = 0;
     }
-
+    
+    /**
+     * Clear queue
+     */
     public void clear() {
         head = null;
         tail = null;
@@ -31,8 +28,7 @@ public class dfs_queue<Element> implements Iterable<Element> {
     }
 
     /**
-     * Returns true if this queue is empty.
-     *
+     * Checks if the queue is empty
      * @return <tt>true</tt> if this queue is empty; <tt>false</tt> otherwise
      */
     public boolean isEmpty() {
@@ -40,23 +36,11 @@ public class dfs_queue<Element> implements Iterable<Element> {
     }
 
     /**
-     * Returns the number of items in this queue.
-     *
+     * Gets the size of the queue
      * @return the number of items in this queue
      */
     public int size() {
         return queueSize;
-    }
-
-    /**
-     * Returns the element least recently added to this queue.
-     *
-     * @return the element least recently added to this queue
-     * @throws NoSuchElementException if this queue is empty
-     */
-    public Element peek() {
-        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        return head.element;
     }
 
     /**
@@ -100,7 +84,10 @@ public class dfs_queue<Element> implements Iterable<Element> {
         return new ListIterator<Element>(head);
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    /**
+     * Iterator which will loop through the collection of states held as "elements" in the queue
+     * @param <Element>
+     */
     private class ListIterator<Element> implements Iterator<Element> {
         private Node<Element> current;
 
@@ -118,20 +105,15 @@ public class dfs_queue<Element> implements Iterable<Element> {
             current = current.next;
             return element;
         }
-        
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-    }
 
+    }
 
     /**
      * add a queue to the beginning of the current queue
      */
     public void addQueue(dfs_queue<Element> queue) {
         if (!queue.isEmpty()) {
-            Node<Element> prevHead = head;
-            
+            Node<Element> prevHead = head;         
             if (isEmpty()) {
                 head = queue.head;
                 tail = queue.tail;
@@ -141,7 +123,12 @@ public class dfs_queue<Element> implements Iterable<Element> {
             }
             queueSize = queueSize + queue.size();
         }
-
     }
 
+    // Linked lists
+    private static class Node<Element> {
+        private Element element;
+        private Node<Element> next;
+    }
+    
 }
